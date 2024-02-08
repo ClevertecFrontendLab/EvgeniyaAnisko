@@ -8,6 +8,7 @@ import { MainPage } from './pages';
 
 import 'normalize.css';
 import './index.css';
+import { LayoutPage } from '@components/layout';
 
 const domNode = document.getElementById('root') as HTMLDivElement;
 const root = createRoot(domNode);
@@ -17,7 +18,9 @@ root.render(
         <Provider store={store}>
             <HashRouter>
                 <Routes>
-                    <Route path='/' element={<MainPage />} />
+                    <Route path="/" element={<LayoutPage />}>
+                        <Route index element={<MainPage />} />
+                    </Route>
                 </Routes>
             </HashRouter>
         </Provider>
