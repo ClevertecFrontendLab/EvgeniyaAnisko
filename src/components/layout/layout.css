@@ -1,17 +1,85 @@
-.site-layout .site-layout-background {
-  background: #fff;
-  /* display: flex; */
+.ant-layout{
+  background: inherit;
+}
+
+.ant-menu{
+  border: 0;
 }
 
 .anticon-menu-fold,
 .anticon-menu-unfold {
   color: #8c8c8c;
+
+}
+
+.ant-layout-sider {
+  margin: 4px;
+}
+
+.ant-menu .ant-menu-item {
+  margin-left: -10px;
+  margin-top: 19px;
+  letter-spacing: 0.5px;
+}
+.ant-menu-item:last-child
+{
+  bottom: 0;
+  position: absolute;
+  border-top: 1px solid #f0f0f0;
+}
+
+.ant-menu-title-content {
+  color: #3d2c2c;
+  letter-spacing: 0.1px;
 }
 
 .trigger {
-  padding: 0 24px;
-  font-size: 18px;
   line-height: 64px;
   cursor: pointer;
-  transition: color 0.3s;
+  transition: 0.3s;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  z-index: 1;
+  -webkit-clip-path: polygon(0 0, 100% 20%, 100% 80%, 0% 100%);
+  clip-path: polygon(0 0, 100% 20%, 100% 80%, 0% 100%, rgba(0, 0, 0, 1));
+
+  width: 20px;
+  height: 66px;
+  background-color: #fff;
+  border: 0;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.3);
+}
+
+.wrapper-site-layout-content {
+  position: relative;
+  height: 100%;
+}
+
+.site-layout-content-page {
+  height: 100%;
+}
+.ant-layout-header
+{
+  background-color: #F0F5FF;
+}
+
+.ant-layout-footer{
+  background: none;
+  padding: 30px;
+  text-align: left;
+}
+
+@media (prefers-color-scheme: light) {
+  .ant-layout-has-sider {
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 253, 253, 0.8) 100%),
+      url("./image/Main page_light.jpg"), lightgray 50% / cover no-repeat;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .ant-layout-has-sider {
+    background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 253, 253, 0.8) 100%),
+      url("./image/Main page_dark.jpg"), lightgray 50% / cover no-repeat;
+  }
 }

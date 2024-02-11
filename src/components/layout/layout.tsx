@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'antd/dist/antd.css';
 import './layout.css';
 import {
@@ -12,95 +12,100 @@ import {
 import type { MenuProps } from 'antd';
 import { Button, Layout, Menu } from 'antd';
 import { Outlet } from 'react-router-dom';
-import { CleverIcon, ExitIcon, FitIcon } from '@components/icons';
+import { CleverfitIcon, ExitIcon, FitIcon } from '@components/icons';
+import { Header } from 'antd/lib/layout/layout';
 
 const { Content, Footer, Sider } = Layout;
 
-const labels = ['Календарь', 'Тренировки', 'Достижения', 'Профиль'];
+const labels = ['Календарь', 'Тренировки', 'Достижения', 'Профиль', 'Выход'];
 
 const items: MenuProps['items'] = [
   CalendarOutlined,
   HeartFilled,
   TrophyFilled,
-  IdcardOutlined
+  IdcardOutlined,
+  ExitIcon
 ].map((icon, index) => ({
   key: String(index + 1),
   icon: React.createElement(icon),
   label: labels[index],
   style: {
-    color: '#061178'
+    color: '#061178',
+    width: "100%"
   },
 }));
 
 const LayoutPage: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
 
+  useEffect(() => {
+    const handleResize = (event: UIEvent) => {
+        setWidth(event.target.innerWidth);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
   };
 
   return <Layout hasSider>
     <Sider
-      breakpoint='lg'
-      // collapsible
+      breakpoint='xs'
       collapsed={collapsed}
-      // collapsedWidth={0}
-      // onBreakpoint={ broken => {console.log(broken)}}
       theme="light"
       style={{
         overflow: 'auto',
         height: '100vh',
-        position: 'fixed',
-        left: 0,
-        top: 0,
-        bottom: 0,
       }}
     >
       <div className="logo">
-        {!collapsed && <CleverIcon />}
-        <FitIcon />
+        {collapsed ? <FitIcon /> : <CleverfitIcon />}
       </div>
       <Menu
         theme="light"
         mode="inline"
         defaultSelectedKeys={['4']}
-        items={items} />
-      <Button
-        type='text'
-        block
-        icon={<ExitIcon />}
-      >{!collapsed && 'Выход'}</Button>
+        items={items}
+      />
     </Sider>
     <Layout className="site-layout" style={{ width: 'auto' }}>
-      <Content className="site-layout-slider-button">
-        <Button
-          type="primary"
-          className='trigger'
-          onClick={toggleCollapsed}
-          style={{ marginBottom: 16, color: 'bisque', background: 'white' }}
-          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          size='small'>
-        </Button>
-      </Content>
 
-
-      <Content className="site-layout-background" style={{ margin: '24px 16px' }}>
-        <div
-          style={{
-            padding: 24,
-            minWidth: 320,
-            width: 100,
-            background: 'red',
-            borderRadius: '50',
-          }}
+      <Content className="site-layout-background"
+      // style={{ margin: '24px 16px' }}
+      >
+        <div className='wrapper-site-layout-content'
         >
+          <Button
+            type="primary"
+            className='trigger'
+            onClick={toggleCollapsed}
+            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+            data-test-id={ width > 500 ? 'sider-switch' : 'sider-switch-mobile'}
+          >
+          </Button>
+          <Header>
 
-          <Outlet />
+          </Header>
+          <div className="site-layout-content-page">
+            <Outlet />
+          </div>
+
         </div>
 
-
       </Content>
-      <Footer>Смотреть отзывы</Footer>
+      <Footer>
+        <Button
+        type='text'
+        style={{color: '#2F54EB'}}
+        >
+        Смотреть отзывы
+        </Button>
+</Footer>
     </Layout>
 
   </Layout>;
