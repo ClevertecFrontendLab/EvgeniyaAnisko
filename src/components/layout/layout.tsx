@@ -7,13 +7,13 @@ import {
   TrophyFilled,
   IdcardOutlined,
   MenuUnfoldOutlined,
-  MenuFoldOutlined
+  MenuFoldOutlined,
+  SettingOutlined
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Button, Layout, Menu } from 'antd';
+import { Button, Descriptions, Layout, Menu, PageHeader } from 'antd';
 import { Outlet } from 'react-router-dom';
 import { CleverfitIcon, ExitIcon, FitIcon } from '@components/icons';
-import { Header } from 'antd/lib/layout/layout';
 import { BreadcrumbComponent } from '@components/breadcrumb';
 
 const { Content, Footer, Sider } = Layout;
@@ -32,7 +32,8 @@ const items: MenuProps['items'] = [
   label: labels[index],
   style: {
     color: '#061178',
-    width: "100%"
+    width: "100%",
+    paddingLeft: '10px'
   },
 }));
 
@@ -76,17 +77,11 @@ const LayoutPage: React.FC = () => {
       className='sider-switch-mobile'
       breakpoint='lg'
       collapsed={collapsed}
-      collapsedWidth={0}
+      collapsedWidth={'1px'}
       theme="light"
       style={{
         overflow: 'auto',
         height: '100vh',
-      }}
-      onBreakpoint={broken => {
-        console.log(broken);
-      }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
       }}
     >
       <div className="logo">
@@ -106,7 +101,7 @@ const LayoutPage: React.FC = () => {
         <div className='wrapper-site-layout-content'
         >
           <Button
-            type="primary"
+            type="text"
             className='trigger trigger-desktop'
             onClick={toggleCollapsed}
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -114,16 +109,31 @@ const LayoutPage: React.FC = () => {
           >
           </Button>
           <Button
-            type="primary"
+            type="text"
             className='trigger trigger-mobile'
             onClick={toggleCollapsed}
             icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
             data-test-id='sider-switch-mobile'
           >
           </Button>
-          <Header>
-            <BreadcrumbComponent />
-          </Header>
+          <PageHeader
+            className="site-page-header"
+            extra={[
+              <Button
+                key="1"
+                type="text"
+                icon={<SettingOutlined />}
+              >
+                Настройки
+              </Button>,
+            ]}
+            breadcrumb={<BreadcrumbComponent />
+            }
+          >
+            <Descriptions size="small">
+              <Descriptions.Item className='site-page-header-paragraph'> Приветствуем тебя в CleverFit — приложении, которое поможет тебе добиться своей мечты!</Descriptions.Item>
+            </Descriptions>
+          </PageHeader>
           <div className="site-layout-content-page">
             <Outlet />
           </div>

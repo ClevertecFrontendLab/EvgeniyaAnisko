@@ -1,3 +1,9 @@
 .breadcrumb-component{
     background-color: inherit;
+    padding-top: 5px;
+}
+
+.ant-breadcrumb{
+    font-size: 15px;
+    font-family: inherit;
 }

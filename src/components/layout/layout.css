@@ -1,5 +1,5 @@
 .ant-layout {
-  background: inherit;
+  background: bottom;
 }
 
 .ant-menu {
@@ -12,14 +12,40 @@
 
 }
 
-.ant-layout-sider {
-  margin: 4px;
+.ant-layout-sider.sider-switch-desktop{
+  margin-left: 8px;
+  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
 }
 
-.ant-menu .ant-menu-item {
-  margin-left: -10px;
+.site-page-header{
+  background-color: #F0F5FF;
+  ;
+}
+
+.ant-page-header-content{
+  padding-top: 10px;
+}
+
+.ant-page-header-content .ant-layout-content{
+  text-align: left;
+  font-weight: bold;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.ant-menu > .ant-menu-item {
   margin-top: 19px;
   letter-spacing: 0.5px;
+  line-height: 18.2px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.ant-page-header-heading-extra{
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.ant-page-header.has-breadcrumb {
+  padding-top: 8px;
+  padding-bottom: 10px;
 }
 
 .ant-menu-item:last-child {
@@ -65,7 +91,27 @@
 .ant-layout-header {
   width: 100%;
   height: 168px;
-  padding: 16px 24px;
+  padding: 6px 24px;
+}
+
+.ant-descriptions-item-content{
+  font-weight: bold;
+  text-align: left;
+  font-size: 38px;
+  max-width: 80%;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin-top: -40px;
+  line-height: 49.4px;
+  padding-bottom: 4px;
+}
+
+.ant-btn-text{
+font-size: 14px;
+font-weight: 400;
+line-height: 18px;
+letter-spacing: 0;
+text-align: center;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 @media screen and (max-width: 360px) {
