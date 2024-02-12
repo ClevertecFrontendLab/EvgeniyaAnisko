@@ -1,8 +1,8 @@
-.ant-layout{
+.ant-layout {
   background: inherit;
 }
 
-.ant-menu{
+.ant-menu {
   border: 0;
 }
 
@@ -21,8 +21,8 @@
   margin-top: 19px;
   letter-spacing: 0.5px;
 }
-.ant-menu-item:last-child
-{
+
+.ant-menu-item:last-child {
   bottom: 0;
   position: absolute;
   border-top: 1px solid #f0f0f0;
@@ -31,6 +31,10 @@
 .ant-menu-title-content {
   color: #3d2c2c;
   letter-spacing: 0.1px;
+}
+
+.sider-switch-mobile {
+  display: none;
 }
 
 .trigger {
@@ -51,6 +55,39 @@
   box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.3);
 }
 
+.trigger-mobile {
+  top: 10px;
+  display: none;
+  width: 32px;
+  height: 48px;
+}
+
+.ant-layout-header {
+  width: 100%;
+  height: 168px;
+  padding: 16px 24px;
+}
+
+@media screen and (max-width: 360px) {
+  .trigger-mobile {
+    display: block;
+  }
+
+  .ant-menu-item:last-child {
+    text-align: center;
+  }
+
+  .trigger-desktop,
+  .sider-switch-desktop {
+    display: none;
+  }
+
+  .sider-switch-mobile {
+    display: block;
+  }
+
+}
+
 .wrapper-site-layout-content {
   position: relative;
   height: 100%;
@@ -59,12 +96,8 @@
 .site-layout-content-page {
   height: 100%;
 }
-.ant-layout-header
-{
-  background-color: #F0F5FF;
-}
 
-.ant-layout-footer{
+.ant-layout-footer {
   background: none;
   padding: 30px;
   text-align: left;
@@ -74,6 +107,9 @@
   .ant-layout-has-sider {
     background: linear-gradient(270deg, rgba(255, 255, 255, 0) 0%, rgba(255, 253, 253, 0.8) 100%),
       url("./image/Main page_light.jpg"), lightgray 50% / cover no-repeat;
+  }
+  .ant-layout-header {
+    background-color: #F0F5FF;
   }
 }
 
