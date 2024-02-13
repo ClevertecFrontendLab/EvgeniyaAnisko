@@ -1,6 +1,7 @@
 #root {
     max-width: 1440px;
     margin: 0 auto;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
     /* padding: 2rem; */
     text-align: center;
@@ -40,4 +41,38 @@
 
 .card {
     padding: 2em;
+}
+
+.ant-card-small > .ant-card-head {
+    /* min-height: 36px;
+    padding: 0 12px; */
+    font-size: 16px;
+    text-align: center;
+}
+
+.main-page-wrapper{
+    padding: 10px;
+}
+
+.main-page-block,
+.ant-card.main-page-block{
+    margin-block: 16px;
+    text-align: left;
+    max-width: 732px;
+}
+
+.ant-list-header{
+    border: 0;
+}
+
+.main-page-block-list-item .ant-typography mark {
+    background-color: inherit;
+    color: #061178;
+}
+
+.main-page-block-list > .ant-list-header,
+.main-page-block-list-item{
+    border-bottom: 0 !important;
+    color: #061178 !important;
+    padding: 0 !important;
 }
